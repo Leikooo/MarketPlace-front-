@@ -1,11 +1,13 @@
-import {Socials} from '../../public/images/imgs'
+import { Socials } from '../../../public/images/imgs'
+import './Newsletter.scss'
 
 export default function Newsletter() {
-    return (
+  return (
+    <div className="Newsletter">
       <div className="Mailing">
         <div className="MailingText1">
           <p>STAY UP TO DATE</p>
-          <Socials/>
+          <Socials />
         </div>
         <div className="MailingText2">
           <p>Get our newsletter</p>
@@ -16,5 +18,6 @@ export default function Newsletter() {
           </div>
         </div>
       </div >
-    )
-  }
+    </div>
+  )
+}

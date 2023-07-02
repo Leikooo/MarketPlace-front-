@@ -1,6 +1,6 @@
 import './Header.scss';
 import Link from 'next/link';
-import {Logo, Socials} from '../../public/images/imgs'
+import {Logo, Socials} from '../../../public/images/imgs'
 
 const Header = () => {
     return (
