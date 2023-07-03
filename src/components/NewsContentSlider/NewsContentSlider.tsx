@@ -9,39 +9,39 @@ export default function Newsletter() {
     const news = [
         {
             id: "1",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/news.png'
+            title: 'Lorem ipsum dolor sit amet, consectetur',
+            date: 'JUNE 11, 2023',
+            src: '/images/slider/pic.jpg'
         },
         {
             id: "2",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/news.png'
+            title: 'Lorem ipsum',
+            date: 'JUNE 9, 2023',
+            src: '/images/slider/pic2.jpg'
         },
         {
             id: "3",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/btc.jpg'
+            title: 'Lorem ipsum dolor sit amet, consectetur',
+            date: 'JUNE 7, 2023',
+            src: '/images/slider/pic.jpg'
         },
         {
             id: "4",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/btc.jpg'
+            title: 'Lorem ipsum dolor sit amet, consectetur',
+            date: 'JUNE 5, 2023',
+            src: '/images/slider/pic2.jpg'
         },
         {
             id: "5",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/btc.jpg'
+            title: 'Lorem ipsum dolor sit amet, consectetur',
+            date: 'JUNE 3, 2023',
+            src: '/images/slider/pic.jpg'
         },
         {
             id: "6",
-            title: 'Bring blockchain to the people. Solana supports experiences.',
-            date: 'JUNE 8, 2023',
-            src: '/images/btc.jpg'
+            title: 'Lorem ipsum dolor sit amet, consectetur',
+            date: 'JUNE 1, 2023',
+            src: '/images/slider/pic2.jpg'
         },
     ]
 

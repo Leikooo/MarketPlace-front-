@@ -29,7 +29,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 64rem;
+    margin-left: 2.8rem;
+    margin-right: 2.8rem;
     height: auto;
     padding-bottom: 1.56rem;
 }
@@ -39,7 +40,6 @@
     flex-direction: column;
     height: 21.6rem;
     width: 100%;
-    justify-content: space-between;
     align-items: flex-start;
 }
 
@@ -67,7 +67,6 @@
 .SliderItemDate {
     font-size: 16px;
     color: #666;
-    margin-bottom: 20px;
     padding-top: 20px;
     padding-left: 20px;
 }
@@ -126,7 +125,10 @@
     background-position: center;
     
 }
-
+.NewsContentSliderContainer{
+    margin-left: 2.8rem;
+    margin-right: 2.8rem;
+}
 .NewsArrowsLeft.disabled {
     pointer-events: none;
     background-position: center;

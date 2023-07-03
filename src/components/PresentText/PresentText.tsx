@@ -9,8 +9,8 @@ export default function PresentText() {
             <p>Our marketplace solutions</p>
           </div>
           <div className="UnderInfo">
-            <p>The fundamental protocol that allows anyone to create and exchange value,</p>
-            <p>powered by zero-knowledge technology.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur </p>
+            <p>Lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur</p>
           </div>
         </div>
       </div>
