@@ -83,7 +83,7 @@ export default function Newsletter() {
     const transformValue = `translateX(-${index * itemWidth}px)`;
 
     const Slides = () => news.map((item) => (
-        <div className="SliderItem" id={item.id}>
+        <div className="SliderItem" key={item.id}>
             <div className="SliderItemImg">
                 <Image src={item.src} width={300} height={300} alt="newsPic" />
             </div>
