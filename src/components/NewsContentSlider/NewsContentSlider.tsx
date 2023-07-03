@@ -24,61 +24,68 @@ export default function Newsletter() {
             title: 'Bring blockchain to the people. Solana supports experiences.',
             date: 'JUNE 8, 2023',
             src: '/images/btc.jpg'
-        }
+        },
+        {
+            id: "4",
+            title: 'Bring blockchain to the people. Solana supports experiences.',
+            date: 'JUNE 8, 2023',
+            src: '/images/btc.jpg'
+        },
+        {
+            id: "5",
+            title: 'Bring blockchain to the people. Solana supports experiences.',
+            date: 'JUNE 8, 2023',
+            src: '/images/btc.jpg'
+        },
+        {
+            id: "6",
+            title: 'Bring blockchain to the people. Solana supports experiences.',
+            date: 'JUNE 8, 2023',
+            src: '/images/btc.jpg'
+        },
     ]
 
     const [index, setIndex] = useState(0)
-    const [index1, setIndex1] = useState(1)
     const [trans, setTrans] = useState(false)
     const [transR, setTransR] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(0)
+    const itemWidth = 401; // ширина одного элемента слайдера
 
     const handlePrev = () => {
         setTransR(true);
         setTrans(false);
         const nextIndex = index - 1;
-        const nextIndex1 = index1 - 1;
-        if (nextIndex1 < 0) {
-          setIndex1(news.length - 1);
-        } else {
-          setIndex1(nextIndex1);
+        document.querySelector('.NewsArrowsRight')!.classList.remove('disabled');
+        document.querySelector('.NewsArrowsRightBtn')!.classList.remove('disabled');
+        if (nextIndex < 1) {
+            document.querySelector('.NewsArrowsLeft')!.classList.add('disabled')
+            document.querySelector('.NewsArrowsLeftBtn')!.classList.add('disabled')
+            setIndex(nextIndex);
+        } else {;
+            setIndex(nextIndex);
         }
-      
-        if (nextIndex < 0) {
-          setIndex(news.length - 1);
-          setActiveIndex(news.length - 1);
-        } else {
-          setIndex(nextIndex);
-          setActiveIndex(activeIndex - 1);
-        }
-      };
-      
-      const handleNext = () => {
+    };
+
+    const handleNext = () => {
         setTrans(true);
         setTransR(false);
         const nextIndex = index + 1;
-        const nextIndex1 = index1 + 1;
-        if (nextIndex1 >= news.length) {
-          setIndex1(0);
+        document.querySelector('.NewsArrowsLeft')!.classList.remove('disabled');
+        document.querySelector('.NewsArrowsLeftBtn')!.classList.remove('disabled');
+        if (nextIndex >= news.length-3) {
+            document.querySelector('.NewsArrowsRight')!.classList.add('disabled')
+            document.querySelector('.NewsArrowsRightBtn')!.classList.add('disabled')
+            setIndex(nextIndex);
         } else {
-          setIndex1(nextIndex1);
+            setIndex(nextIndex);
         }
-      
-        if (nextIndex >= news.length) {
-          setIndex(0);
-          setActiveIndex(0);
-        } else {
-          setIndex(nextIndex);
-          setActiveIndex(activeIndex + 1);
-        }
-      };
+    };
 
-    const transformValue = `translateX(-${activeIndex * (100 / news.length)}%)`;
+    const transformValue = `translateX(-${index * itemWidth}px)`;
 
     const Slides = () => news.map((item) => (
         <div className="SliderItem" id={item.id}>
             <div className="SliderItemImg">
-                <Image src={item.src} width={300} height={300} alt="newsPic" loading="lazy" />
+                <Image src={item.src} width={300} height={300} alt="newsPic" />
             </div>
             <div className="SliderItemContent">
                 <div className="SliderItemDate">
@@ -90,6 +97,7 @@ export default function Newsletter() {
             </div>
         </div>
     ));
+
     return (
         <div className="InTheNewsContainer">
             <div className="InTheNews">
@@ -98,8 +106,8 @@ export default function Newsletter() {
                         <p>In the news</p>
                     </div>
                     <div className="NewsArrows">
-                        <div className="NewsArrowsLeft" onClick={handlePrev} >
-                            <button className="NewsArrowsLeftBtn" />
+                        <div className="NewsArrowsLeft disabled" onClick={handlePrev} >
+                            <button className="NewsArrowsLeftBtn disabled" />
                         </div>
                         <div className="NewsArrowsRight" onClick={handleNext} >
                             <button className="NewsArrowsRightBtn" />
