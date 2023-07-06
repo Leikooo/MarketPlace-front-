@@ -9,7 +9,7 @@
     margin-right: 0;
 }
 
-.BuildInfoTabs{
+.BuildInfoTabs {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,14 +17,15 @@
     padding-bottom: 1.56rem;
 }
 
-.BuildBtns{
+.BuildBtns {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    gap : 1.25rem;
+    gap: 1.25rem;
     padding-bottom: 1.56rem;
 }
-.buttonTab{
+
+.buttonTab {
     border-radius: 0.875rem;
     background: rgba(25, 25, 28, 0.88);
     display: inline-flex;
@@ -36,7 +37,7 @@
     cursor: pointer;
 }
 
-.BuildHeader{
+.BuildHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,7 +56,7 @@
     width: 100%;
 }
 
-.tabcontent{
+.tabcontent {
     margin-left: 2.8rem;
     margin-right: 2.8rem;
     display: inline-flex;
@@ -67,7 +68,7 @@
     background: url("../../../public/images/BuildInfoSliderBg.svg") no-repeat;
 }
 
-.BuildInfoSliderItem{
+.BuildInfoSliderItem {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -76,14 +77,14 @@
     height: 100%;
 }
 
-.BuildInfoSliderItemImg{
+.BuildInfoSliderItemImg {
     display: flex;
     flex-direction: row;
     height: 100%;
     width: 26.3rem;
 }
 
-.BuildInfoSliderItemImg img{
+.BuildInfoSliderItemImg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -99,7 +100,8 @@
     padding-right: 1.2rem;
     padding-bottom: 3.5rem;
 }
-.BuildInfoSliderItemText h2{
+
+.BuildInfoSliderItemText h2 {
     color: #F0F0F0;
     text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.54);
     font-size: 1.5rem;
@@ -110,7 +112,7 @@
     margin-bottom: 1.5rem;
 }
 
-.BuildInfoSliderItemText p{
+.BuildInfoSliderItemText p {
     color: #7B1DC6;
     font-size: 1.125rem;
     font-family: Satoshi;

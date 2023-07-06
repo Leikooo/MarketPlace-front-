@@ -8,8 +8,8 @@ import React, { useState } from 'react'
 export default function BuildInfoSlider() {
     const [activeTab, setActiveTab] = useState('Gaming');
 
-    const openTab = (tabName:string) => {
-      setActiveTab(tabName);
+    const openTab = (tabName: string) => {
+        setActiveTab(tabName);
     }
 
     return (
@@ -18,16 +18,16 @@ export default function BuildInfoSlider() {
                 <div className="BuildHeader">
                     <h1>Build for growth</h1>
                     <div className="BuildBtns">
-                        <div className= {`buttonTab ${activeTab === 'Gaming' ? 'active' : ''}`} onClick={() => openTab('Gaming')}>
+                        <div className={`buttonTab ${activeTab === 'Gaming' ? 'active' : ''}`} onClick={() => openTab('Gaming')}>
                             <button className="Gaming active">Gaming</button>
                         </div>
-                        <div className={`buttonTab ${activeTab === 'Software' ? 'active' : ''}`}  onClick={() => openTab('Software')}>
+                        <div className={`buttonTab ${activeTab === 'Software' ? 'active' : ''}`} onClick={() => openTab('Software')}>
                             <button className="Software">Software</button>
                         </div>
                         <div className={`buttonTab ${activeTab === 'Game coins' ? 'active' : ''}`} onClick={() => openTab('Game coins')}>
                             <button className="Game coins">Game coins</button>
                         </div>
-                        <div className={`buttonTab ${activeTab === 'Social Media' ? 'active' : ''}`}  onClick={() => openTab('Social Media')}>
+                        <div className={`buttonTab ${activeTab === 'Social Media' ? 'active' : ''}`} onClick={() => openTab('Social Media')}>
                             <button className="Social Media">Social Media</button>
                         </div>
                     </div>

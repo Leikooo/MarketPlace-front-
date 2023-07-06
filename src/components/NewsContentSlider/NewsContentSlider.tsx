@@ -60,7 +60,8 @@ export default function Newsletter() {
             document.querySelector('.NewsArrowsLeft')!.classList.add('disabled')
             document.querySelector('.NewsArrowsLeftBtn')!.classList.add('disabled')
             setIndex(nextIndex);
-        } else {;
+        } else {
+            ;
             setIndex(nextIndex);
         }
     };
@@ -71,7 +72,7 @@ export default function Newsletter() {
         const nextIndex = index + 1;
         document.querySelector('.NewsArrowsLeft')!.classList.remove('disabled');
         document.querySelector('.NewsArrowsLeftBtn')!.classList.remove('disabled');
-        if (nextIndex >= news.length-3) {
+        if (nextIndex >= news.length - 3) {
             document.querySelector('.NewsArrowsRight')!.classList.add('disabled')
             document.querySelector('.NewsArrowsRightBtn')!.classList.add('disabled')
             setIndex(nextIndex);

@@ -1,6 +1,6 @@
 import './Header.scss';
 import Link from 'next/link';
-import {Logo, Socials} from '../../../public/images/imgs'
+import { Logo, Socials } from '../../../public/images/imgs'
 
 const Header = () => {
     return (
@@ -8,15 +8,15 @@ const Header = () => {
             <nav className="navigate">
                 <Link href="/">
                     <div className="logo">
-                        <Logo/>
+                        <Logo />
                         <div className="title">
                             <p>FNM</p>
                         </div>
-                        
+
                     </div>
                 </Link>
                 <div className="searchField">
-                    <input type="search" id="search" className="search" placeholder="Search..."/>
+                    <input type="search" id="search" className="search" placeholder="Search..." />
                 </div>
                 <div className="links">
                     <div className="products">
@@ -32,7 +32,7 @@ const Header = () => {
                         <Link href="/community">Community</Link>
                     </div>
                 </div>
-                <Socials/>
+                <Socials />
                 <div className="login">
                     <Link href="/">Log in</Link>
                 </div>
