@@ -1,3 +1,5 @@
+'use client';
+
 import './Header.scss';
 import Link from 'next/link';
 import { Logo, Socials } from '../../../public/images/imgs'
@@ -12,7 +14,6 @@ const Header = () => {
                         <div className="title">
                             <p>FNM</p>
                         </div>
-
                     </div>
                 </Link>
                 <div className="searchField">
@@ -20,21 +21,21 @@ const Header = () => {
                 </div>
                 <div className="links">
                     <div className="products">
-                        <Link href="/products">Products</Link>
+                        <Link href={"/products"}>Products</Link>
                     </div>
                     <div className="support">
-                        <Link href="/support">Support</Link>
+                        <Link href={"/support"}>Support</Link>
                     </div>
                     <div className="company">
-                        <Link href="/company">Company</Link>
+                        <Link href={"/company"}>Company</Link>
                     </div>
                     <div className="community">
-                        <Link href="/community">Community</Link>
+                        <Link href={"/community"}>Community</Link>
                     </div>
                 </div>
                 <Socials />
                 <div className="login">
-                    <Link href="/">Log in</Link>
+                    <Link href="/">Sign in</Link>
                 </div>
             </nav>
         </header>
