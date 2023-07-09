@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
 import './Header.scss';
 import Link from 'next/link';
+import { observer } from 'mobx-react';
 import { Logo, Socials } from '../../../public/images/imgs'
+import authStore from '@/app/store/auth';
 
-const Header = () => {
+const Header = observer(() => {
     return (
         <header className="header">
             <nav className="navigate">
@@ -34,12 +36,18 @@ const Header = () => {
                     </div>
                 </div>
                 <Socials />
-                <div className="login">
-                    <Link href="/">Sign in</Link>
-                </div>
+                {authStore.isAuth ? (
+                    <div className="auth">
+                        <Link href={"/profile"}>Profile</Link>
+                    </div>
+                ) : (
+                    <div className="auth">
+                        <button className="Signin" onClick={ () => authStore.setIsAuth(true) }>Sign in</button>
+                    </div>
+                )}
             </nav>
         </header>
     );
-};
+});
 
 export default Header;
