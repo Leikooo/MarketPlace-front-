@@ -39,3 +39,18 @@ export function Logo() {
     </svg>
     )
 }
+
+export function AuthBack() {
+    return (
+        <svg width="419" height="579" viewBox="0 0 419 579" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="420" height="579" fill="url(#paint0_linear_1514_1877)" />
+            <rect width="420" height="579" fill="#4F00F5" fillOpacity="0.05" />
+            <defs>
+                <linearGradient id="paint0_linear_1514_1877" x1="210.223" y1="579" x2="210.223" y2="1.30863e-05" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#020202" stopOpacity="0.79" />
+                    <stop offset="1" stopColor="#020202" stopOpacity="0" />
+                </linearGradient>
+            </defs>
+        </svg>
+    )
+}

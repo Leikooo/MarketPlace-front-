@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { observer } from 'mobx-react';
 import { Logo, Socials } from '../../../public/images/imgs'
 import authStore from '@/app/store/auth';
+import modalAuthStore from '@/app/store/modalAuth';
 
 const Header = observer(() => {
     return (
@@ -42,7 +43,7 @@ const Header = observer(() => {
                     </div>
                 ) : (
                     <div className="auth">
-                        <button className="Signin" onClick={ () => authStore.setIsAuth(true) }>Sign in</button>
+                        <button className="Signin" onClick={() => modalAuthStore.setIsActive(true) }>Sign in</button>
                     </div>
                 )}
             </nav>
