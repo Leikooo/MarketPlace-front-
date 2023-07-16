@@ -49,6 +49,8 @@
 .form__input {
     border-radius: 0.25rem;
     background: rgba(255, 255, 255, 0.06);
+    width: 27.1875rem;
+    flex-shrink: 0;
     height: 2.5rem;
     border: none;
     padding: 0 0.75rem;
@@ -76,13 +78,50 @@
 .modal__forms{
     display: flex;
     flex-direction: column;
-    width: 25.4rem;
+    width: 27.1875rem;
+}
+
+.form__group_pass{
+    display: flex;
+    flex-direction: row;
+    width: 27.1875rem;
+    justify-content: space-between;
+    padding-top: 1.56rem;
+}
+
+.pass__group{
+    width: 12.6875rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    
+}
+
+.pass__input{
+    width: 12.6875rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+    border: none;
+    padding: 0 0.75rem;
+    font-size: 1rem;
+    &:focus {
+        outline: none;
+    }
+}
+
+.password{
+    width: 12.6875rem;
+    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
 }
 
 .form__group{
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding-top: 1rem;
 }
 
 .form__label {
