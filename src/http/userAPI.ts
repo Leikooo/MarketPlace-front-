@@ -1,21 +1,21 @@
-import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { $authHost, $host } from "./index";
 
-const $host = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-});
-
-const $authHost = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-});
-
-const authInterceptor = (config: any) => {
-    config.headers.authorization = `Bearer ${localStorage.getItem("token")}`;
-    return config;
+export const registration = async (username: string, email: string, password: string) => {
+    const { data } = await $host.post("api/user/registration", {username, email, password, role: "ADMIN" });
+    localStorage.setItem("token", data.token);
+    return jwtDecode(data.token);
 }
 
-$authHost.interceptors.request.use(authInterceptor);
 
-export {
-    $host,
-    $authHost
+export const login = async (email: string, password: string) => {
+    const { data } = await $host.post("api/user/login", { email, password });
+    localStorage.setItem("token", data.token);
+    return jwtDecode(data.token);
+}
+
+export const check = async () => {
+    const { data } = await $authHost.get("api/user/auth");
+    localStorage.setItem("token", data.token);
+    return data;
 }

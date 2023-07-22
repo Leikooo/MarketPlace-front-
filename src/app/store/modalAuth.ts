@@ -1,8 +1,8 @@
-import { observable, action, makeAutoObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 class modalAuthStore {
     isActive = false;
-    isLogin = true;
+    IsLoginWindow = true;
     constructor() {
         makeAutoObservable(this)
     }
@@ -11,11 +11,9 @@ class modalAuthStore {
         this.isActive = isActive;
     }
 
-    setIsLogin = (isLogin: boolean) => {
-        this.isLogin = isLogin;
+    setIsLoginWindow = (isLogin: boolean) => {
+        this.IsLoginWindow = isLogin;
     }
-    
 }
-
 
 export default new modalAuthStore();
