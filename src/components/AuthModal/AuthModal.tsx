@@ -1,12 +1,12 @@
 "use client";
 import './AuthModal.scss';
-import modalAuthStore from '@/app/store/modalAuth';
-import UserStore from '@/app/store/UserStore';
+import modalAuthStore from '@/app/(site)/store/modalAuth';
+import UserStore from '@/app/(site)/store/UserStore';
 import { observer } from "mobx-react-lite";
 import { AuthBack } from '../../../public/images/imgs'
 import Link from 'next/link';
-import { useState } from 'react';
 import { login, registration } from '@/http/userAPI'
+import { useForm } from 'react-hook-form';
 
 const handleModalClose = () => {
   modalAuthStore.setIsActive(false);
@@ -15,28 +15,25 @@ const handleModalClose = () => {
 
 
 export const AuthComp = observer(() => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [Emptyerror, setEmptyerror] = useState(false);
-
-  const click = async (e: React.MouseEvent<HTMLButtonElement>) => {
-
-    e.preventDefault();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const click = async (data: any) => {
     try {
-      if (email.trim() === '' || password.trim() === '') {
+      if (!data.email || !data.password) {
         alert('Заполните все поля');
       } else {
-        const data = await login(email, password);
-        console.log(data);
+        const user = await login(data.email, data.password);
+        console.log("login\n" + user);
         UserStore.setIsAuth(true);
-        UserStore.setUser(data);
+        UserStore.setUser(user);
         modalAuthStore.setIsActive(false)
-        
       }
     } catch (err: any) {
-      alert(err.response.data.message);
+      if (err?.response) {
+        alert(err.response.data.message);
+      }
+      else {
+        alert(err);
+      }
     }
   }
 
@@ -54,7 +51,7 @@ export const AuthComp = observer(() => {
               <button className="modal__close" />
             </div>
             <div className="modal__forms">
-              <form className="form">
+              <form className="form" onSubmit={handleSubmit(click)}>
                 <div className="form__group">
                   <label className="form__label" htmlFor="email">
                     {"Email address"}
@@ -66,8 +63,7 @@ export const AuthComp = observer(() => {
                     required
                     autoComplete='email'
                     placeholder=""
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    {...register('email')}
                   />
                 </div>
                 <div className="form__group">
@@ -80,8 +76,8 @@ export const AuthComp = observer(() => {
                     id="password"
                     autoComplete='current-password'
                     placeholder=""
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    required
+                    {...register('password')}
                   />
                 </div>
                 <div className="checkbox__group1">
@@ -98,13 +94,11 @@ export const AuthComp = observer(() => {
                     <p>
                       {"Don't have an account?"}
                     </p>
-                    <button onClick={() => modalAuthStore.setIsLoginWindow(false)} className="form__link">
+                    <button onClick={() => modalAuthStore.setIsLoginWindow(false)} className="form__link" type="button">
                       {"Sign up"}
                     </button>
                   </div>
-                  <button className="form__button" type="submit" onClick={click}>
-                    {"Log in"}
-                  </button>
+                  <input className="form__button" type="submit" value={'Login'} />
                 </div>
               </form>
             </div>
@@ -116,28 +110,30 @@ export const AuthComp = observer(() => {
 })
 
 export const RegComp = observer(() => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password_confirm, setPasswordConfirm] = useState("");
-  const [username, setUsername] = useState("");
-  const click = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const click = async (data: any) => {
     try {
-      if (email.trim() === '' || password.trim() === '' || username.trim() === '') {
-        alert('Заполните все поля');
+      if (!data.email || !data.password || !data.username || !data.password_confirm) {
+        alert('Заполните все поля' + data.email + data.password + data.username + data.password_confirm);
       }
-      else if (password !== password_confirm) {
+      else if (data.password !== data.password_confirm) {
         alert('Пароли не совпадают');
       }
       else {
-        const data = await registration(username, email, password);
+        const user = await registration(data.username, data.email, data.password);
         UserStore.setIsAuth(true);
-        UserStore.setUser(data);
+        UserStore.setUser(user);
         modalAuthStore.setIsActive(false)
-        console.log(data);
+        console.log(user);
       }
     } catch (err: any) {
-      alert(err.response.data.message);
+      if (err?.response) {
+        alert(err.response.data.message);
+      }
+      else {
+        alert(err);
+      }
     }
   }
   return (
@@ -154,7 +150,7 @@ export const RegComp = observer(() => {
               <button className="modal__close" />
             </div>
             <div className="modal__forms">
-              <form className="form">
+              <form className="form" onSubmit={handleSubmit(click)}>
                 <div className="form__group">
                   <label className="form__label" htmlFor="Username">
                     {"Username"}
@@ -165,8 +161,8 @@ export const RegComp = observer(() => {
                     id="Username"
                     autoComplete='username'
                     placeholder=""
-                    value={username}
-                    onChange={e => setUsername(e.target.value)} />
+                    required
+                    {...register('username')} />
                 </div>
                 <div className="form__group">
                   <label className="form__label" htmlFor="email">
@@ -178,8 +174,8 @@ export const RegComp = observer(() => {
                     id="email"
                     autoComplete='email'
                     placeholder=""
-                    value={email}
-                    onChange={e => setEmail(e.target.value)} />
+                    required
+                    {...register('email')} />
                 </div>
                 <div className="form__group_pass">
                   <div className="pass__group">
@@ -192,8 +188,8 @@ export const RegComp = observer(() => {
                       id="password"
                       autoComplete='current-password'
                       placeholder=""
-                      value={password}
-                      onChange={e => setPassword(e.target.value)} />
+                      required
+                      {...register('password')} />
                   </div>
                   <div className="pass__group">
                     <label className="form__label" htmlFor="password">
@@ -205,8 +201,8 @@ export const RegComp = observer(() => {
                       id="conf_password"
                       autoComplete='current-password'
                       placeholder=""
-                      value={password_confirm}
-                      onChange={e => setPasswordConfirm(e.target.value)} />
+                      required
+                      {...register('password_confirm')} />
                   </div>
                 </div>
                 <div className="checkbox__group2">
@@ -214,13 +210,11 @@ export const RegComp = observer(() => {
                     <p>
                       {"Already have an account?"}
                     </p>
-                    <button onClick={() => modalAuthStore.setIsLoginWindow(true)} className="form__link">
+                    <button onClick={() => modalAuthStore.setIsLoginWindow(true)} className="form__link" type="button">
                       {"Sign in"}
                     </button>
                   </div>
-                  <button className="form__button" type="submit" onClick={click}>
-                    {"Sign up"}
-                  </button>
+                  <input className="form__button" type="submit" value={"Sign up"} />
                 </div>
               </form>
             </div>
