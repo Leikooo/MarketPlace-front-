@@ -7,15 +7,30 @@ import { Logo, DefaultAvatar } from '../../../public/images/imgs'
 import authStore from '@/app/store/UserStore';
 import modalAuthStore from '@/app/store/modalAuth';
 import dropsStore from '@/app/store/dropsStore';
+import { useClickOutside } from '@/app/hooks/useClickOutside';
+import { useRef } from 'react';
 
-import { useState } from 'react'
 
 const Header = observer(() => {
-    const avatar = authStore._user.avatar;
+    const menuRef = useRef(null);
+
+    useClickOutside(menuRef, () => dropsStore.setIsProfileActive(false));
+
+    let avatar
+    if (authStore?._user?.avatar) {
+        avatar = authStore._user?.avatar;
+    }
     const logout = () => {
         authStore.setIsAuth(false);
-        authStore.setUser({});
+        authStore.setUser({
+            'id': null,
+            'email': null,
+            'name': null,
+            'role': null,
+            'avatar': null
+        });
         dropsStore.setIsProfileActive(false);
+        localStorage.removeItem('token');
     }
 
     return (
@@ -45,18 +60,18 @@ const Header = observer(() => {
                 </div>
                 {/* <Socials /> */}
                 {authStore._isAuth ? (
-                    <div className="authLogin">
-                        <button onClick={() => dropsStore.setIsProfileActive(!dropsStore.isProfileActive)}>
+                    <div className="authLogin" ref={menuRef}>
+                        <button className='avatarbnt' onClick={() => dropsStore.setIsProfileActive(!dropsStore.isProfileActive)}>
                             <div className="avatar">
                                 {avatar ? <img src={avatar} alt="avatar" /> : <DefaultAvatar />}
                             </div>
                         </button>
                         <div className={dropsStore.isProfileActive ? 'dropdown active' : 'dropdown'}>
-                            <Link className='dropbnts' href="/profile">Profile</Link>
-                            <Link className='dropbnts' href="/settings">Settings</Link>
-                            <Link className='dropbnts' href="/balance">Balance</Link>
-                            <Link className='dropbnts' href="/alerts">Alerts</Link>
-                            <button className='dropbnts' onClick={logout}>Log Out</button>
+                            <Link className='dropitem' href="/profile" onClick={() => dropsStore.setIsProfileActive(false)}>Profile</Link>
+                            <Link className='dropitem' href="/settings" onClick={() => dropsStore.setIsProfileActive(false)}>Settings</Link>
+                            <Link className='dropitem' href="/balance" onClick={() => dropsStore.setIsProfileActive(false)}>Balance</Link>
+                            <Link className='dropitem' href="/alerts" onClick={() => dropsStore.setIsProfileActive(false)}>Alerts</Link>
+                            <button className='dropitem' onClick={logout}>Log Out</button>
                         </div>
                     </div>
                 ) : (
