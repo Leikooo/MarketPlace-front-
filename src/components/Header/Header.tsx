@@ -30,6 +30,7 @@ const Header = observer(() => {
             'avatar': null
         });
         dropsStore.setIsProfileActive(false);
+        localStorage.removeItem('token');
     }
 
     return (
